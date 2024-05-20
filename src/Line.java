@@ -196,7 +196,9 @@ public class Line {
      */
     public Point intersectionWith(Line other) {
         Point intersectionPoint = this.lineAndLineIntersect(other);
-        if (Util.isEqual(intersectionPoint.getX(), Double.POSITIVE_INFINITY)) {
+        if ((intersectionPoint == null)
+                || (Util.isEqual(intersectionPoint.getX(),
+                    Double.POSITIVE_INFINITY))) {
             return null;
         }
         return intersectionPoint;
