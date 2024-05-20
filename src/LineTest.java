@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 import java.awt.geom.Line2D;
 
 public class LineTest {

@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 /**
  * class of utility, helper methods to compression with threshold.
  */

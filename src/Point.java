@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 /**
  * This Point class implement point and their methods for doing GUI
  * that connect between lines and points.

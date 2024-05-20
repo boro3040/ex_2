@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import java.util.Random;

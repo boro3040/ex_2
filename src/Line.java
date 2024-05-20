@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 /**
  * This Line class is class of line-segments that starts in one point in
  * 2-D space and ends in other point.

@@ -5,24 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eb80065-3122-4ee1-896a-bd4d3bf6ea58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.ant-targets-build.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/biuoop_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/AbstractArtDrawing.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GeometryTester.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Line.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/LineTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Point.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/SimpleGuiExample.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AbstractArtDrawing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SimpleGuiExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex_2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ex_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/BallsTest1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Velocity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BallsTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Velocity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/AbstractArtDrawing.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/AbstractArtDrawing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/SimpleGuiExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/SimpleGuiExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractArtDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractArtDrawing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeometryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleGuiExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleGuiExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1716188035348</updated>
       <workItem from="1716188035361" duration="847000" />
-      <workItem from="1716189117371" duration="8324000" />
+      <workItem from="1716189117371" duration="18568000" />
     </task>
     <servers />
   </component>
@@ -99,16 +99,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/AbstractArtDrawing.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

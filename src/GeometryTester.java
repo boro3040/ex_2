@@ -1,3 +1,9 @@
+/*
+Barak Davidovitch
+211604350
+OOP ex2
+ */
+
 /**
  * This class does some simple tessting of the Point and Line classes.
  */
