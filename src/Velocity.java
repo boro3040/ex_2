@@ -47,4 +47,16 @@ public class Velocity {
     public Point applyToPoint(Point p) {
         return new Point(p.getX() + this.dx, p.getY() + this.dy);
     }
+
+    /**
+     * Take angle (direction) and speed and make it cartesian coordinates.
+     * @param angle the angle from y clockwise in degrees.
+     * @param speed the vector of velocity size.
+     * @return the Velocity object that fit this angle and speed.
+     */
+    public static Velocity fromAngleAndSpeed(double angle, double speed) {
+        double dx = Math.sin(Math.toRadians(angle)) * speed;
+        double dy = Math.cos(Math.toRadians(angle)) * speed;
+        return new Velocity(dx, dy);
+    }
 }

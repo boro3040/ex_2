@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eb80065-3122-4ee1-896a-bd4d3bf6ea58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/BallsTest1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Velocity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BallsTest1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Velocity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BouncingBallAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/AbstractArtDrawing.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/AbstractArtDrawing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/SimpleGuiExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/SimpleGuiExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractArtDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractArtDrawing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GeometryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleGuiExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleGuiExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Velocity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Velocity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Velocity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Velocity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,28 +40,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.AbstractArtDrawing.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/biuoop.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AbstractArtDrawing.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/biuoop.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -90,7 +79,8 @@
       <option name="presentableId" value="Default" />
       <updated>1716188035348</updated>
       <workItem from="1716188035361" duration="847000" />
-      <workItem from="1716189117371" duration="18568000" />
+      <workItem from="1716189117371" duration="23936000" />
+      <workItem from="1716240165842" duration="1114000" />
     </task>
     <servers />
   </component>

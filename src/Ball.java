@@ -4,11 +4,8 @@ Barak Davidovitch
 OOP ex2
  */
 
-import biuoop.Sleeper;
-import biuoop.GUI;
 import biuoop.DrawSurface;
 import java.awt.Color;
-import java.util.Random;
 
 /**
  * Class representing balls.
@@ -16,6 +13,12 @@ import java.util.Random;
  * they know how to draw themselves.
  */
 public class Ball {
+    /*
+    The limits of the screen that the bouncing ball can get.
+    I entered default values.
+    */
+    private static int screenWidth = 200;
+    private static int screenHeight = 200;
 
     private Point center;
     private final int radius;
@@ -132,32 +135,47 @@ public class Ball {
      * Move the ball center one step with the velocity of him.
      */
     public void moveOneStep() {
+        // change velocity if ball pass boundaries in x-axis.
+        if (((this.velocity.getDx() > 0)
+                    && ((this.center.getX() + this.radius) >= screenWidth))
+                || ((this.velocity.getDx() < 0)
+                    && ((this.center.getX() - this.radius) <= 0))) {
+            this.velocity = new Velocity(-this.velocity.getDx(),
+                                        this.velocity.getDy());
+        // change velocity if ball pass boundaries in y-axis.
+        } else if (((this.velocity.getDy() > 0)
+                    && ((this.center.getY() + this.radius) >= screenHeight))
+                || ((this.velocity.getDy() < 0)
+                    && ((this.center.getY() - this.radius) <= 0))) {
+            this.velocity = new Velocity(this.velocity.getDx(),
+                                        -this.velocity.getDy());
+        }
         this.center = this.getVelocity().applyToPoint(this.center);
     }
 
     /**
-     * Example of draw animation with the ball.
+     * Set the static parameters of screen size.
+     * @param width the width of screen, ball can't pass this.
+     * @param height the height of screen, ball can't pass this.
      */
-    static private void drawAnimation(Point start, double dx, double dy) {
-        GUI gui = new GUI("title", 200, 200);
-        Sleeper sleeper = new Sleeper();
-        Ball ball = new Ball(start.getX(), start.getY(), 30, java.awt.Color.BLACK);
-        ball.setVelocity(dx, dy);
-        while (true) {
-            ball.moveOneStep();
-            DrawSurface d = gui.getDrawSurface();
-            ball.drawOn(d);
-            gui.show(d);
-            sleeper.sleepFor(50); // wait for 50 milliseconds.
-        }
+    public static void setWidthHeight(int width, int height) {
+        screenWidth = width;
+        screenHeight = height;
     }
 
     /**
-     * Main method to check the class.
-     * @param args command line arguments - not in use.
+     * get the width of the screen limits of the ball.
+     * @return the width of screen.
      */
-    public static void main(String[] args) {
-        drawAnimation(new Point(100, 100), 1, -1);
+    public static int getWidth() {
+        return screenWidth;
     }
 
+    /**
+     * get the height of the screen limits of the ball.
+     * @return the height of screen.
+     */
+    public static int getHeight() {
+        return screenHeight;
+    }
 }
