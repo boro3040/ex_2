@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eb80065-3122-4ee1-896a-bd4d3bf6ea58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BouncingBallAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Velocity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Velocity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Velocity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Velocity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BouncingBallAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BouncingBallAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,9 @@
       <updated>1716188035348</updated>
       <workItem from="1716188035361" duration="847000" />
       <workItem from="1716189117371" duration="23936000" />
-      <workItem from="1716240165842" duration="1114000" />
+      <workItem from="1716240165842" duration="7259000" />
+      <workItem from="1716391104207" duration="805000" />
+      <workItem from="1716444701608" duration="1017000" />
     </task>
     <servers />
   </component>

@@ -44,7 +44,7 @@ public class BouncingBallAnimation {
      */
     public static void main(String[] args) {
         // set screen height and width.
-        Ball.setWidthHeight(400, 200);
+        Ball.setWidthHeight(200, 200);
 
         int startX = Integer.parseInt(args[0]);
         int startY = Integer.parseInt(args[1]);

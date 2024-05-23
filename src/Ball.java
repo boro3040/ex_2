@@ -136,17 +136,21 @@ public class Ball {
      */
     public void moveOneStep() {
         // change velocity if ball pass boundaries in x-axis.
-        if (((this.velocity.getDx() > 0)
-                    && ((this.center.getX() + this.radius) >= screenWidth))
-                || ((this.velocity.getDx() < 0)
-                    && ((this.center.getX() - this.radius) <= 0))) {
+        if ((Util.isBigger(this.velocity.getDx(), 0)
+                    && Util.isBiggerOrEqual(this.center.getX() + this.radius,
+                                            screenWidth))
+                || (Util.isSmaller(this.velocity.getDx(), 0)
+                    && Util.isSmallerOrEqual(this.center.getX() - this.radius,
+                                            0))) {
             this.velocity = new Velocity(-this.velocity.getDx(),
                                         this.velocity.getDy());
         // change velocity if ball pass boundaries in y-axis.
-        } else if (((this.velocity.getDy() > 0)
-                    && ((this.center.getY() + this.radius) >= screenHeight))
-                || ((this.velocity.getDy() < 0)
-                    && ((this.center.getY() - this.radius) <= 0))) {
+        } else if ((Util.isBigger(this.velocity.getDy(), 0)
+                    && Util.isBiggerOrEqual(this.center.getY() + this.radius,
+                                            screenHeight))
+                || (Util.isSmaller(this.velocity.getDy(), 0)
+                    && Util.isSmallerOrEqual(this.center.getY() - this.radius,
+                                            0))) {
             this.velocity = new Velocity(this.velocity.getDx(),
                                         -this.velocity.getDy());
         }
