@@ -33,8 +33,8 @@ public final class MultipleBouncingBallsAnimation {
         for (int i = 0; i < ballsNum; i++) {
             int radius = Integer.parseInt(args[i]);
             // generate random center location on the screen.
-            int x = rand.nextInt(Ball.getWidth()) + 1;
-            int y = rand.nextInt(Ball.getHeight()) + 1;
+            int x = rand.nextInt((int) Ball.getWidth()) + 1;
+            int y = rand.nextInt((int) Ball.getHeight()) + 1;
             // generate random color.
             int r = rand.nextInt(256);
             int g = rand.nextInt(256);
@@ -70,7 +70,8 @@ public final class MultipleBouncingBallsAnimation {
      * all balls in the array of balls and draw them.
      */
     private void drawAnimation() {
-        GUI gui = new GUI("title", Ball.getWidth(), Ball.getHeight());
+        GUI gui = new GUI("title", (int) Ball.getWidth(),
+                            (int) Ball.getHeight());
         Sleeper sleeper = new Sleeper();
         while (true) {
             DrawSurface d = gui.getDrawSurface();

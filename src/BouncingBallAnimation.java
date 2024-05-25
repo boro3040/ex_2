@@ -22,7 +22,8 @@ public class BouncingBallAnimation {
      * @param dy the y direction velocity vector.
      */
     private static void drawAnimation(Point start, double dx, double dy) {
-        GUI gui = new GUI("title", Ball.getWidth(), Ball.getHeight());
+        GUI gui = new GUI("title", (int) Ball.getWidth(),
+                            (int) Ball.getHeight());
         Sleeper sleeper = new Sleeper();
         int ballRadius = 30;
         Ball ball = new Ball(start.getX(), start.getY(), ballRadius,

@@ -6,6 +6,8 @@ OOP ex2
 
 import biuoop.DrawSurface;
 import java.awt.Color;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**
  * Class representing balls.
@@ -13,17 +15,19 @@ import java.awt.Color;
  * they know how to draw themselves.
  */
 public class Ball {
+
     /*
     The limits of the screen that the bouncing ball can get.
     I entered default values.
     */
-    private static int screenWidth = 200;
-    private static int screenHeight = 200;
+    private static final Rectangle SCREEN = new Rectangle(0, 0, 200, 200);
 
     private Point center;
     private final int radius;
     private final Color color;
     private Velocity velocity;
+    private final ArrayList<Rectangle> insideRectanglesArray;
+    private final ArrayList<Rectangle> outsideRectanglesArray;
 
     /**
      * The constructor of the ball.
@@ -35,6 +39,8 @@ public class Ball {
         this.center = center;
         this.radius = r;
         this.color = color;
+        this.insideRectanglesArray = new ArrayList<Rectangle>();
+        this.outsideRectanglesArray = new ArrayList<Rectangle>();
     }
 
     /**
@@ -48,7 +54,8 @@ public class Ball {
         this.center = new Point(x, y);
         this.radius = r;
         this.color = color;
-
+        this.insideRectanglesArray = new ArrayList<Rectangle>();
+        this.outsideRectanglesArray = new ArrayList<Rectangle>();
     }
 
     /**
@@ -62,7 +69,8 @@ public class Ball {
         this.center = new Point(x, y);
         this.radius = r;
         this.color = color;
-
+        this.insideRectanglesArray = new ArrayList<Rectangle>();
+        this.outsideRectanglesArray = new ArrayList<Rectangle>();
     }
 
     /**
@@ -98,6 +106,30 @@ public class Ball {
     }
 
     /**
+     * get the width of the screen limits of the ball.
+     * @return the width of screen.
+     */
+    public static double getWidth() {
+        return SCREEN.getWidth();
+    }
+
+    /**
+     * get the height of the screen limits of the ball.
+     * @return the height of screen.
+     */
+    public static double getHeight() {
+        return SCREEN.getHeight();
+    }
+
+    /**
+     * Get the current velocity of the ball.
+     * @return the velocity on Velocity object type.
+     */
+    public Velocity getVelocity() {
+        return new Velocity(this.velocity.getDx(), this.velocity.getDy());
+    }
+
+    /**
      * draw the ball on the given DrawSurface.
      * @param surface The draw surface we want to draw on.
      */
@@ -124,37 +156,124 @@ public class Ball {
     }
 
     /**
-     * Get the current velocity of the ball.
-     * @return the velocity on Velocity object type.
-     */
-    public Velocity getVelocity() {
-        return new Velocity(this.velocity.getDx(), this.velocity.getDy());
-    }
-
-    /**
      * Move the ball center one step with the velocity of him.
      */
     public void moveOneStep() {
+        // check the ball don't pass rectangles
+        stayInsideRectangle(SCREEN);
+        for (Rectangle r: this.outsideRectanglesArray) {
+            stayOutsideRectangle(r);
+        }
+        for (Rectangle r: this.insideRectanglesArray) {
+            stayInsideRectangle(r);
+        }
+        // one step forward.
+        this.center = this.getVelocity().applyToPoint(this.center);
+    }
+
+    /**
+     * check if the ball is getting inside the rectangle and change the
+     * velocity direction if needed.
+     * @param rectangle The Rectangle we want to check about.
+     */
+    public void stayInsideRectangle(Rectangle rectangle) {
         // change velocity if ball pass boundaries in x-axis.
-        if ((Util.isBigger(this.velocity.getDx(), 0)
+        if ((Util.isBiggerOrEqual(this.velocity.getDx(), 0)
                     && Util.isBiggerOrEqual(this.center.getX() + this.radius,
-                                            screenWidth))
-                || (Util.isSmaller(this.velocity.getDx(), 0)
+                                            rectangle.getMaxX()))
+                || (Util.isSmallerOrEqual(this.velocity.getDx(), 0)
                     && Util.isSmallerOrEqual(this.center.getX() - this.radius,
-                                            0))) {
+                                            rectangle.getMinX()))) {
             this.velocity = new Velocity(-this.velocity.getDx(),
                                         this.velocity.getDy());
+        }
         // change velocity if ball pass boundaries in y-axis.
-        } else if ((Util.isBigger(this.velocity.getDy(), 0)
+        if ((Util.isBiggerOrEqual(this.velocity.getDy(), 0)
                     && Util.isBiggerOrEqual(this.center.getY() + this.radius,
-                                            screenHeight))
-                || (Util.isSmaller(this.velocity.getDy(), 0)
+                                            rectangle.getMaxY()))
+                || (Util.isSmallerOrEqual(this.velocity.getDy(), 0)
                     && Util.isSmallerOrEqual(this.center.getY() - this.radius,
-                                            0))) {
+                                            rectangle.getMinY()))) {
             this.velocity = new Velocity(this.velocity.getDx(),
                                         -this.velocity.getDy());
         }
-        this.center = this.getVelocity().applyToPoint(this.center);
+    }
+
+    /**
+     * check if the ball is getting outside the rectangle and change the
+     * velocity direction if needed.
+     * @param rectangle The Rectangle we want to check about.
+     */
+    public void stayOutsideRectangle(Rectangle rectangle) {
+        /*
+        change velocity if ball pass boundaries in x-axis.
+        start checking if ball is in the range of rectangle in Y-axis.
+         */
+        if (Util.isBiggerOrEqual(this.center.getY() + this.radius,
+                                rectangle.getMinY())
+                && Util.isSmallerOrEqual(this.center.getY() - this.radius,
+                                rectangle.getMaxY())) {
+            // check if ball came inside with x-axis velocity.
+            if ((Util.isBiggerOrEqual(this.velocity.getDx(), 0)
+                    && Util.isBiggerOrEqual(this.center.getX() + this.radius,
+                                            rectangle.getMinX()))
+                    || (Util.isSmallerOrEqual(this.velocity.getDx(), 0)
+                    && Util.isSmallerOrEqual(this.center.getX() - this.radius,
+                                            rectangle.getMaxX()))) {
+                this.velocity = new Velocity(-this.velocity.getDx(),
+                        this.velocity.getDy());
+            }
+        }
+        /*
+        change velocity if ball pass boundaries in y-axis.
+        start checking if ball is in the range of rectangle in x-axis.
+         */
+        if (Util.isBiggerOrEqual(this.center.getX() + this.radius,
+                                rectangle.getMinX())
+                && Util.isSmallerOrEqual(this.center.getX() - this.radius,
+                                rectangle.getMaxX())) {
+            if ((Util.isBiggerOrEqual(this.velocity.getDy(), 0)
+                    && Util.isBiggerOrEqual(this.center.getY() + this.radius,
+                                            rectangle.getMinY()))
+                    || (Util.isSmallerOrEqual(this.velocity.getDy(), 0)
+                    && Util.isSmallerOrEqual(this.center.getY() - this.radius,
+                                            rectangle.getMaxY()))) {
+                this.velocity = new Velocity(this.velocity.getDx(),
+                                            -this.velocity.getDy());
+            }
+        }
+    }
+
+    /**
+     * This method checks if ball is really in specific rectangle.
+     * @param rectangle The rectangle we want to check about.
+     * @return true only when all ball is inside rectangle, otherwise false.
+     */
+    public boolean isBallInsideRectangle(Rectangle rectangle) {
+        return Util.isSmaller(this.center.getX() + this.radius,
+                            rectangle.getMaxX())
+                    && Util.isBigger(this.center.getX() - this.radius,
+                            rectangle.getMinX())
+                    && Util.isSmaller(this.center.getY() + this.radius,
+                            rectangle.getMaxY())
+                    && Util.isBigger(this.center.getY() - this.radius,
+                            rectangle.getMinY());
+    }
+
+    /**
+     * This method checks if ball is really out of specific rectangle.
+     * @param rectangle The rectangle we want to check about.
+     * @return true only when all ball is outside rectangle, otherwise false.
+     */
+    public boolean isBallOutsideRectangle(Rectangle rectangle) {
+        return Util.isBigger(this.center.getX() - this.radius,
+                            rectangle.getMaxX())
+                    || Util.isSmaller(this.center.getX() + this.radius,
+                            rectangle.getMinX())
+                    || Util.isBigger(this.center.getY() - this.radius,
+                            rectangle.getMaxY())
+                    || Util.isSmaller(this.center.getY() + this.radius,
+                            rectangle.getMinY());
     }
 
     /**
@@ -163,23 +282,22 @@ public class Ball {
      * @param height the height of screen, ball can't pass this.
      */
     public static void setWidthHeight(int width, int height) {
-        screenWidth = width;
-        screenHeight = height;
+        SCREEN.setBounds(0, 0, width, height);
     }
 
     /**
-     * get the width of the screen limits of the ball.
-     * @return the width of screen.
+     * add new rectangle to the end of inside rectangles list.
+     * @param rectangle the wanted rectangle.
      */
-    public static int getWidth() {
-        return screenWidth;
+    public void addInsideRectangle(Rectangle rectangle) {
+        this.insideRectanglesArray.add(rectangle);
     }
 
     /**
-     * get the height of the screen limits of the ball.
-     * @return the height of screen.
+     * add new rectangle to the end of outside rectangles list.
+     * @param rectangle the wanted rectangle.
      */
-    public static int getHeight() {
-        return screenHeight;
+    public void addOutsideRectangle(Rectangle rectangle) {
+        this.outsideRectanglesArray.add(rectangle);
     }
 }

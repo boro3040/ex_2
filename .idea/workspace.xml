@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eb80065-3122-4ee1-896a-bd4d3bf6ea58" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/MultipleFramesBouncingBallsAnimation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BouncingBallAnimation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/AbstractArtDrawing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/AbstractArtDrawing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/GeometryTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/GeometryTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/Line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/LineTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/LineTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/SimpleGuiExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/SimpleGuiExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ex_2/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ex_2/Util.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BouncingBallAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BouncingBallAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" afterDir="false" />
@@ -44,6 +54,8 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Application.AbstractArtDrawing.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.MultipleBouncingBallsAnimation.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.MultipleFramesBouncingBallsAnimation.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -61,6 +73,29 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager" selected="Application.MultipleFramesBouncingBallsAnimation">
+    <configuration name="MultipleBouncingBallsAnimation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MultipleBouncingBallsAnimation" />
+      <module name="ex_2" />
+      <option name="PROGRAM_PARAMETERS" value="3 4 7 20 30" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MultipleFramesBouncingBallsAnimation" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MultipleFramesBouncingBallsAnimation" />
+      <module name="ex_2" />
+      <option name="PROGRAM_PARAMETERS" value="3 4 10 20" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MultipleBouncingBallsAnimation" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -81,7 +116,9 @@
       <workItem from="1716189117371" duration="23936000" />
       <workItem from="1716240165842" duration="7259000" />
       <workItem from="1716391104207" duration="805000" />
-      <workItem from="1716444701608" duration="1017000" />
+      <workItem from="1716444701608" duration="19413000" />
+      <workItem from="1716563788850" duration="6656000" />
+      <workItem from="1716630519318" duration="170000" />
     </task>
     <servers />
   </component>
@@ -90,5 +127,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Ball.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
