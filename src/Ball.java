@@ -157,91 +157,168 @@ public class Ball {
 
     /**
      * Move the ball center one step with the velocity of him.
+     * also check the intersection points with all rectangles in screen and move
+     * center when needed.
      */
     public void moveOneStep() {
-        // check the ball don't pass rectangles
-        stayInsideRectangle(SCREEN);
+        Point newCenter = null;
+        // find new center if there is intersection.
+        newCenter = this.rectangleIntersection(SCREEN, 1);
         for (Rectangle r: this.outsideRectanglesArray) {
-            stayOutsideRectangle(r);
+            newCenter = this.center.findClosestPoint(newCenter,
+                        this.rectangleIntersection(r, -1));
         }
         for (Rectangle r: this.insideRectanglesArray) {
-            stayInsideRectangle(r);
+            newCenter = this.center.findClosestPoint(newCenter,
+                        this.rectangleIntersection(r, 1));
         }
         // one step forward.
-        this.center = this.getVelocity().applyToPoint(this.center);
-    }
-
-    /**
-     * check if the ball is getting inside the rectangle and change the
-     * velocity direction if needed.
-     * @param rectangle The Rectangle we want to check about.
-     */
-    public void stayInsideRectangle(Rectangle rectangle) {
-        // change velocity if ball pass boundaries in x-axis.
-        if ((Util.isBiggerOrEqual(this.velocity.getDx(), 0)
-                    && Util.isBiggerOrEqual(this.center.getX() + this.radius,
-                                            rectangle.getMaxX()))
-                || (Util.isSmallerOrEqual(this.velocity.getDx(), 0)
-                    && Util.isSmallerOrEqual(this.center.getX() - this.radius,
-                                            rectangle.getMinX()))) {
+        if (newCenter == null) {
+            this.center = this.getVelocity().applyToPoint(this.center);
+            return;
+        }
+        this.center = newCenter;
+        if (newCenter.getScreenXoRY() == 1) {
             this.velocity = new Velocity(-this.velocity.getDx(),
                                         this.velocity.getDy());
-        }
-        // change velocity if ball pass boundaries in y-axis.
-        if ((Util.isBiggerOrEqual(this.velocity.getDy(), 0)
-                    && Util.isBiggerOrEqual(this.center.getY() + this.radius,
-                                            rectangle.getMaxY()))
-                || (Util.isSmallerOrEqual(this.velocity.getDy(), 0)
-                    && Util.isSmallerOrEqual(this.center.getY() - this.radius,
-                                            rectangle.getMinY()))) {
+        } else {
             this.velocity = new Velocity(this.velocity.getDx(),
                                         -this.velocity.getDy());
         }
     }
 
     /**
-     * check if the ball is getting outside the rectangle and change the
-     * velocity direction if needed.
-     * @param rectangle The Rectangle we want to check about.
+     * This method find the point of center in the line intersection with ball
+     * that move from one point to another with his velocity.
+     * @param line The line we want to find intersection.
+     * @param minMaxFlag -1 the min side of the rectangle, 1 the other side.
+     * @param velocityFlag -1 when velocity is negative, 1 else.
+     * @param inOrOutFlag -1 when the ball need to be out of rectangle, 1 else.
+     * @return the center of the ball when he meet the line. if
+     * it's returning null there is no intersection.
      */
-    public void stayOutsideRectangle(Rectangle rectangle) {
-        /*
-        change velocity if ball pass boundaries in x-axis.
-        start checking if ball is in the range of rectangle in Y-axis.
-         */
-        if (Util.isBiggerOrEqual(this.center.getY() + this.radius,
-                                rectangle.getMinY())
-                && Util.isSmallerOrEqual(this.center.getY() - this.radius,
-                                rectangle.getMaxY())) {
-            // check if ball came inside with x-axis velocity.
-            if ((Util.isBiggerOrEqual(this.velocity.getDx(), 0)
-                    && Util.isBiggerOrEqual(this.center.getX() + this.radius,
-                                            rectangle.getMinX()))
-                    || (Util.isSmallerOrEqual(this.velocity.getDx(), 0)
-                    && Util.isSmallerOrEqual(this.center.getX() - this.radius,
-                                            rectangle.getMaxX()))) {
+    public Point lineIntersection(Line line, int minMaxFlag,
+                                  int velocityFlag, int inOrOutFlag) {
+        Point startPoint = this.center;
+        Point endPoint = this.getVelocity().applyToPoint(this.center);
+        // check if ball can pass the line
+        if (!((inOrOutFlag == 1) && (Math.abs(minMaxFlag + velocityFlag) == 2)
+                || (inOrOutFlag == -1) && (minMaxFlag + velocityFlag == 0))) {
+            return null;
+        }
+
+        Point rightCenter = null;
+        Point leftCenter = null;
+        Point upCenter = null;
+        Point downCenter = null;
+        // right point of ball
+        Point rightPoint = line.intersectionWith(new Line(startPoint.getX()
+                + this.radius, startPoint.getY(),
+                endPoint.getX() + this.radius, endPoint.getY()));
+        if (rightPoint != null) {
+            rightCenter = new Point(rightPoint.getX() - this.radius,
+                    rightPoint.getY());
+            rightCenter.setScreenXoRY(1);
+        }
+
+        // left point of ball
+        Point leftPoint = line.intersectionWith(new Line(startPoint.getX()
+                - this.radius, startPoint.getY(),
+                endPoint.getX() - this.radius, endPoint.getY()));
+        if (leftPoint != null) {
+            leftCenter = new Point(leftPoint.getX() + this.radius,
+                    leftPoint.getY());
+            leftCenter.setScreenXoRY(1);
+        }
+
+        // up point of ball
+        Point upPoint = line.intersectionWith(new Line(startPoint.getX(),
+                startPoint.getY() + this.radius,
+                endPoint.getX(), endPoint.getY() + this.radius));
+        if (upPoint != null) {
+            upCenter = new Point(upPoint.getX(),
+                    upPoint.getY() - this.radius);
+            upCenter.setScreenXoRY(-1);
+        }
+
+        // down point of ball
+        Point downPoint = line.intersectionWith(new Line(startPoint.getX(),
+                startPoint.getY() - this.radius,
+                endPoint.getX(), endPoint.getY() - this.radius));
+        if (downPoint != null) {
+            downCenter = new Point(downPoint.getX(),
+                    downPoint.getY() + this.radius);
+            downCenter.setScreenXoRY(-1);
+        }
+        // find the first intersection center from all 4.
+        return startPoint.findClosestPoint(rightCenter,
+                    startPoint.findClosestPoint(leftCenter,
+                    startPoint.findClosestPoint(upCenter,
+                    downCenter)));
+    }
+
+    /**
+     * Find the center of the closest intersection point with rectangle, between
+     * the current state of the ball, and the state after one step.
+     * @param rectangle THe rectangle we want to check.
+     * @param inOrOutFlag -1 when the ball need to be out of rectangle, 1 else.
+     * @return The center of the first intersection point, null if there isn't
+     * intersection in this move.
+     */
+    public Point rectangleIntersection(Rectangle rectangle, int inOrOutFlag) {
+        Point startPoint = this.center;
+        Point endPoint = this.getVelocity().applyToPoint(this.center);
+        //treat corners.
+        Point firstCorner = new Point(rectangle.getMaxX(), rectangle.getMaxY());
+        Point secondCorner = new Point(rectangle.getMinX(), rectangle.getMaxY());
+        Point thirdCorner = new Point(rectangle.getMaxX(), rectangle.getMinY());
+        Point fourthCorner = new Point(rectangle.getMinX(), rectangle.getMinY());
+        if (Util.isSmallerOrEqual(endPoint.distance(firstCorner), this.radius)
+            || Util.isSmallerOrEqual(endPoint.distance(secondCorner), this.radius)
+            || Util.isSmallerOrEqual(endPoint.distance(thirdCorner), this.radius)
+            || Util.isSmallerOrEqual(endPoint.distance(fourthCorner), this.radius)) {
+                // special case when we need to turn both velocities.
                 this.velocity = new Velocity(-this.velocity.getDx(),
-                        this.velocity.getDy());
-            }
-        }
-        /*
-        change velocity if ball pass boundaries in y-axis.
-        start checking if ball is in the range of rectangle in x-axis.
-         */
-        if (Util.isBiggerOrEqual(this.center.getX() + this.radius,
-                                rectangle.getMinX())
-                && Util.isSmallerOrEqual(this.center.getX() - this.radius,
-                                rectangle.getMaxX())) {
-            if ((Util.isBiggerOrEqual(this.velocity.getDy(), 0)
-                    && Util.isBiggerOrEqual(this.center.getY() + this.radius,
-                                            rectangle.getMinY()))
-                    || (Util.isSmallerOrEqual(this.velocity.getDy(), 0)
-                    && Util.isSmallerOrEqual(this.center.getY() - this.radius,
-                                            rectangle.getMaxY()))) {
-                this.velocity = new Velocity(this.velocity.getDx(),
                                             -this.velocity.getDy());
-            }
         }
+
+        int velocityFlagX, velocityFlagY;
+        if (Util.isBiggerOrEqual(this.velocity.getDx(), 0)) {
+            velocityFlagX = 1;
+        } else {
+            velocityFlagX = -1;
+        }
+        if (Util.isBiggerOrEqual(this.velocity.getDy(), 0)) {
+            velocityFlagY = 1;
+        } else {
+            velocityFlagY = -1;
+        }
+
+        Line rightLine = new Line(rectangle.getMaxX(), rectangle.getMinY(),
+                rectangle.getMaxX(), rectangle.getMaxY());
+        Point rightIntersection = lineIntersection(rightLine, 1,
+                velocityFlagX, inOrOutFlag);
+
+        Line leftLine = new Line(rectangle.getMinX(), rectangle.getMinY(),
+                rectangle.getMinX(), rectangle.getMaxY());
+        Point leftIntersection = lineIntersection(leftLine, -1,
+                velocityFlagX, inOrOutFlag);
+
+        Line upLine = new Line(rectangle.getMinX(), rectangle.getMaxY(),
+                rectangle.getMaxX(), rectangle.getMaxY());
+        Point upIntersection = lineIntersection(upLine, 1,
+                velocityFlagY, inOrOutFlag);
+
+        Line downLine = new Line(rectangle.getMinX(), rectangle.getMinY(),
+                rectangle.getMaxX(), rectangle.getMinY());
+        Point downIntersection = lineIntersection(downLine, -1,
+                velocityFlagY, inOrOutFlag);
+
+        // find the first intersection center from all 4.
+        return startPoint.findClosestPoint(rightIntersection,
+                    startPoint.findClosestPoint(leftIntersection,
+                    startPoint.findClosestPoint(upIntersection,
+                    downIntersection)));
     }
 
     /**
@@ -283,6 +360,15 @@ public class Ball {
      */
     public static void setWidthHeight(int width, int height) {
         SCREEN.setBounds(0, 0, width, height);
+    }
+
+    /**
+     * get the screen in Rectangle shape.
+     * @return the screen the ball inside.
+     */
+    public static Rectangle getScreen() {
+        return new Rectangle(0, 0, (int) SCREEN.getWidth(),
+                            (int) SCREEN.getHeight());
     }
 
     /**

@@ -11,6 +11,12 @@ OOP ex2
 public class Point {
     private final double x;
     private final double y;
+    /*
+    a values that tell if this point is intersecting X or Y axes line (3.2).
+    0 - not set yet. 1 - is intersection of Y-axes parallel.
+    -1 - same with X-axes.
+     */
+    private int screenXoRY = 0;
 
     /**
      * The constructor.
@@ -106,5 +112,40 @@ public class Point {
      */
     public double cross(Point other) {
         return (this.getX() * other.getY() - this.getY() * other.getX());
+    }
+
+    /**
+     * This method checks which point is closest to this point.
+     * @param point1 first point
+     * @param point2 second point
+     * @return The closest point to this point, and null if the 2 points
+     * are null.
+     */
+    public Point findClosestPoint(Point point1, Point point2) {
+        if (point1 == null) {
+            return point2;
+        } else if (point2 == null) {
+            return point1;
+        }
+        if (Util.isBiggerOrEqual(this.distance(point1), this.distance(point2))) {
+            return point2;
+        }
+        return point1;
+    }
+
+    /**
+     * This method is setting the special value of screenXOrY.
+     * @param x the value we want to set.
+     */
+    public void setScreenXoRY(int x) {
+        this.screenXoRY = x;
+    }
+
+    /**
+     * Get the screenXOrY parameter.
+     * @return the screenXOrY parameter.
+     */
+    public int getScreenXoRY() {
+        return this.screenXoRY;
     }
 }

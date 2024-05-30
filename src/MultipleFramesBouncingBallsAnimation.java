@@ -23,7 +23,7 @@ public final class MultipleFramesBouncingBallsAnimation {
     The biggest size of the ball, I choose size that will not do problems.
     from there the speed is identical and smaller the sizes to this size
     */
-    private final int biggestSize = 20;
+    private final int biggestSize = 50;
     // The 2 rectangles they define us in mission.
     private final Rectangle rectangle1 = new Rectangle(50, 50, 450, 450);
     private final Rectangle rectangle2 = new Rectangle(450, 450, 150, 150);
@@ -41,23 +41,31 @@ public final class MultipleFramesBouncingBallsAnimation {
 
         for (int i = 0; i < ballsNum; i++) {
             int radius = Integer.parseInt(args[i]);
-            // can't handle bigger balls.
-            radius = Math.min(radius, this.biggestSize);
             // generate random color.
             int r = rand.nextInt(256);
             int g = rand.nextInt(256);
             int b = rand.nextInt(256);
             Color randomColor = new Color(r, g, b);
             Ball tempBall;
+            int counter = 0;
             // half of the balls inside rectangle1 and outside rectangle2.
             if (i <= (int) (ballsNum / 2)) {
                 do {
                     // generate random center location on the screen.
                     int x = rand.nextInt((int) Ball.getWidth()) + 1;
                     int y = rand.nextInt((int) Ball.getHeight()) + 1;
+                    /*
+                     if the random position can't succeed in 1000
+                     runs ball get smaller.
+                     */
+                    if (counter > 1000) {
+                        radius = this.biggestSize;
+                    }
                     tempBall = new Ball(x, y, radius, randomColor);
+                    counter++;
                 } while (!(tempBall.isBallInsideRectangle(this.rectangle1)
-                        && tempBall.isBallOutsideRectangle(this.rectangle2)));
+                        && tempBall.isBallOutsideRectangle(this.rectangle2)
+                        && tempBall.isBallInsideRectangle(Ball.getScreen())));
                 this.ballsArray[i] = tempBall;
                 this.ballsArray[i].addInsideRectangle(this.rectangle1);
                 this.ballsArray[i].addOutsideRectangle(this.rectangle2);
@@ -67,9 +75,18 @@ public final class MultipleFramesBouncingBallsAnimation {
                     // generate random center location on the screen.
                     int x = rand.nextInt((int) Ball.getWidth()) + 1;
                     int y = rand.nextInt((int) Ball.getHeight()) + 1;
+                    /*
+                    if the random position can't succeed in 1000
+                    runs ball get smaller.
+                    */
+                    if (counter > 1000) {
+                        radius = this.biggestSize;
+                    }
                     tempBall = new Ball(x, y, radius, randomColor);
+                    counter++;
                 } while (!(tempBall.isBallOutsideRectangle(this.rectangle1)
-                        && tempBall.isBallOutsideRectangle(this.rectangle2)));
+                        && tempBall.isBallOutsideRectangle(this.rectangle2)
+                        && tempBall.isBallInsideRectangle(Ball.getScreen())));
                 this.ballsArray[i] = tempBall;
                 this.ballsArray[i].addOutsideRectangle(this.rectangle1);
                 this.ballsArray[i].addOutsideRectangle(this.rectangle2);
