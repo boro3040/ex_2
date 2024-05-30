@@ -7,11 +7,11 @@
     <list default="true" id="8eb80065-3122-4ee1-896a-bd4d3bf6ea58" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MultipleFramesBouncingBallsAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MultipleFramesBouncingBallsAnimation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MultipleBouncingBallsAnimation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractArtDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractArtDrawing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleGuiExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleGuiExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +111,7 @@
       <workItem from="1716563788850" duration="6656000" />
       <workItem from="1716630519318" duration="170000" />
       <workItem from="1717064180283" duration="4617000" />
-      <workItem from="1717090032965" duration="12865000" />
+      <workItem from="1717090032965" duration="14855000" />
     </task>
     <servers />
   </component>

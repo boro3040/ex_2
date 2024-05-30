@@ -18,6 +18,11 @@ import java.util.Random;
 public final class MultipleBouncingBallsAnimation {
 
     private final Ball[] ballsArray;
+    /*
+    The biggest size of the ball, I choose size that will not do problems.
+    from there the speed is identical and smaller the sizes to this size
+    */
+    private final int biggestSize = 50;
 
     /**
      * The constructor that takes the user command line arguments and initialize
@@ -31,15 +36,29 @@ public final class MultipleBouncingBallsAnimation {
         Random rand = new Random();
 
         for (int i = 0; i < ballsNum; i++) {
-            int radius = Integer.parseInt(args[i]);
-            // generate random center location on the screen.
-            int x = rand.nextInt((int) Ball.getWidth()) + 1;
-            int y = rand.nextInt((int) Ball.getHeight()) + 1;
             // generate random color.
             int r = rand.nextInt(256);
             int g = rand.nextInt(256);
             int b = rand.nextInt(256);
             Color randomColor = new Color(r, g, b);
+            int radius = Integer.parseInt(args[i]);
+            Ball tempBall;
+            int x, y;
+            int counter = 0;
+            do {
+                // generate random center location on the screen.
+                x = rand.nextInt((int) Ball.getWidth()) + 1;
+                y = rand.nextInt((int) Ball.getHeight()) + 1;
+                /*
+                 if the random position can't succeed in 1000
+                 runs ball get smaller.
+                 */
+                if (counter > 1000) {
+                    radius = this.biggestSize;
+                }
+                tempBall = new Ball(x, y, radius, randomColor);
+                counter++;
+            } while (!(tempBall.isBallInsideRectangle(Ball.getScreen())));
             this.ballsArray[i] = new Ball(x, y, radius, randomColor);
         }
     }
@@ -53,10 +72,9 @@ public final class MultipleBouncingBallsAnimation {
         Random rand = new Random();
         for (Ball tempBall : this.ballsArray) {
             // biggest size, from there the speed is identical.
-            int biggestSize = 50;
             int speed;
-            if (tempBall.getSize() < biggestSize) {
-                speed = biggestSize / tempBall.getSize();
+            if (tempBall.getSize() < this.biggestSize) {
+                speed = this.biggestSize / tempBall.getSize();
             } else {
                 speed = 1;
             }

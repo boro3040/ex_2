@@ -161,7 +161,7 @@ public class Ball {
      * center when needed.
      */
     public void moveOneStep() {
-        Point newCenter = null;
+        Point newCenter;
         // find new center if there is intersection.
         newCenter = this.rectangleIntersection(SCREEN, 1);
         for (Rectangle r: this.outsideRectanglesArray) {

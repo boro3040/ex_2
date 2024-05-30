@@ -124,7 +124,7 @@ public class AbstractArtDrawing {
                     if ((i >= j) || (j >= k)) {
                         continue;
                     }
-                    // draw intersection points of of each pair out of the three
+                    // draw intersection points of each pair out of the three
                     Point point1 = linesArray[i].intersectionWith(linesArray[j]);
                     boolean triangleFlag = drawPoint(point1, d, Color.RED);
                     Point point2 = linesArray[j].intersectionWith(linesArray[k]);
