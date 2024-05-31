@@ -22,13 +22,18 @@ public class BouncingBallAnimation {
      * @param dy the y direction velocity vector.
      */
     private static void drawAnimation(Point start, double dx, double dy) {
-        GUI gui = new GUI("title", (int) Ball.getWidth(),
-                            (int) Ball.getHeight());
         Sleeper sleeper = new Sleeper();
         int ballRadius = 30;
         Ball ball = new Ball(start.getX(), start.getY(), ballRadius,
-                            java.awt.Color.BLACK);
+                java.awt.Color.BLACK);
+        // if ball starts outside raise error and stop program.
+        if (!ball.isBallInsideRectangle(Ball.getScreen())) {
+            System.out.println("Ball starting outside screen.");
+            return;
+        }
         ball.setVelocity(dx, dy);
+        GUI gui = new GUI("title", (int) Ball.getWidth(),
+                            (int) Ball.getHeight());
         while (true) {
             ball.moveOneStep();
             DrawSurface d = gui.getDrawSurface();
